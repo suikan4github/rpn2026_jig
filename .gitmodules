@@ -1,0 +1,3 @@
+[submodule "firmware_rpn_g0b1re_akashi_11/rpn_engine"]
+	path = firmware_rpn_g0b1re_akashi_11/rpn_engine
+	url = https://github.com/suikan4github/rpn_engine.git
