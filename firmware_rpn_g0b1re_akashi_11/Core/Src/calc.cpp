@@ -131,23 +131,23 @@ static void AssertKeyMatrixRow( uint8_t row )
 	// Clear all row.
 	// Because the line is open drain, the clear means set.
 	if ( 0 == row)
-		HAL_GPIO_WritePin(KD0_GPIO_Port, KD0_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(KR0_GPIO_Port, KR0_Pin, GPIO_PIN_RESET);
 	if ( 1 == row)
-		HAL_GPIO_WritePin(KD1_GPIO_Port, KD1_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(KR1_GPIO_Port, KR1_Pin, GPIO_PIN_RESET);
 	if ( 2 == row)
-		HAL_GPIO_WritePin(KD2_GPIO_Port, KD2_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(KR2_GPIO_Port, KR2_Pin, GPIO_PIN_RESET);
 	if ( 3 == row)
-		HAL_GPIO_WritePin(KD3_GPIO_Port, KD3_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(KR3_GPIO_Port, KR3_Pin, GPIO_PIN_RESET);
 	if ( 4 == row)
-		HAL_GPIO_WritePin(KD4_GPIO_Port, KD4_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(KR4_GPIO_Port, KR4_Pin, GPIO_PIN_RESET);
 	if ( 5 == row)
-		HAL_GPIO_WritePin(KD5_GPIO_Port, KD5_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(KR5_GPIO_Port, KR5_Pin, GPIO_PIN_RESET);
 	if ( 6 == row)
-		HAL_GPIO_WritePin(KD6_GPIO_Port, KD6_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(KR6_GPIO_Port, KR6_Pin, GPIO_PIN_RESET);
 	if ( 7 == row)
-		HAL_GPIO_WritePin(KD7_GPIO_Port, KD7_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(KR7_GPIO_Port, KR7_Pin, GPIO_PIN_RESET);
 	if ( 8 == row)
-		HAL_GPIO_WritePin(KD8_GPIO_Port, KD8_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(KR8_GPIO_Port, KR8_Pin, GPIO_PIN_RESET);
 }
 
 // Set specific key matrix row to inactive
@@ -156,23 +156,23 @@ static void DeassertKeyMatrixRow( uint8_t row )
 	// Clear all row.
 	// Because the line is open drain, the clear means set.
 	if ( 0 == row)
-		HAL_GPIO_WritePin(KD0_GPIO_Port, KD0_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(KR0_GPIO_Port, KR0_Pin, GPIO_PIN_SET);
 	if ( 1 == row)
-		HAL_GPIO_WritePin(KD1_GPIO_Port, KD1_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(KR1_GPIO_Port, KR1_Pin, GPIO_PIN_SET);
 	if ( 2 == row)
-		HAL_GPIO_WritePin(KD2_GPIO_Port, KD2_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(KR2_GPIO_Port, KR2_Pin, GPIO_PIN_SET);
 	if ( 3 == row)
-		HAL_GPIO_WritePin(KD3_GPIO_Port, KD3_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(KR3_GPIO_Port, KR3_Pin, GPIO_PIN_SET);
 	if ( 4 == row)
-		HAL_GPIO_WritePin(KD4_GPIO_Port, KD4_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(KR4_GPIO_Port, KR4_Pin, GPIO_PIN_SET);
 	if ( 5 == row)
-		HAL_GPIO_WritePin(KD5_GPIO_Port, KD5_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(KR5_GPIO_Port, KR5_Pin, GPIO_PIN_SET);
 	if ( 6 == row)
-		HAL_GPIO_WritePin(KD6_GPIO_Port, KD6_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(KR6_GPIO_Port, KR6_Pin, GPIO_PIN_SET);
 	if ( 7 == row)
-		HAL_GPIO_WritePin(KD7_GPIO_Port, KD7_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(KR7_GPIO_Port, KR7_Pin, GPIO_PIN_SET);
 	if ( 8 == row)
-		HAL_GPIO_WritePin(KD8_GPIO_Port, KD8_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(KR8_GPIO_Port, KR8_Pin, GPIO_PIN_SET);
 }
 
 // Execution entity of the calculator. Drive the VFD by the dynamic way. Scan the key and give it to Console object.
@@ -281,18 +281,18 @@ extern "C" void exec_calc()
 
 			  // read key state and store the state to the calc::anti_chatter[] objects.
 			  // Anti chattering object will call the Console object, if needed.
-			  calc::anti_chatter[8-digit][0]->Input(
-					  ( HAL_GPIO_ReadPin(KEY1_GPIO_Port, KEY1_Pin) == GPIO_PIN_RESET)?
+			  calc::anti_chatter[digit][0]->Input(
+					  ( HAL_GPIO_ReadPin(KC0_GPIO_Port, KC0_Pin) == GPIO_PIN_RESET)?
 							  rpn_engine::KeyLevel::high :
 							  rpn_engine::KeyLevel::low
 			  );
-			  calc::anti_chatter[8-digit][1]->Input(
-					  ( HAL_GPIO_ReadPin(KEY2_GPIO_Port, KEY2_Pin) == GPIO_PIN_RESET)?
+			  calc::anti_chatter[digit][1]->Input(
+					  ( HAL_GPIO_ReadPin(KC1_GPIO_Port, KC1_Pin) == GPIO_PIN_RESET)?
 							  rpn_engine::KeyLevel::high :
 							  rpn_engine::KeyLevel::low
 			  );
-			  calc::anti_chatter[8-digit][2]->Input(
-					  ( HAL_GPIO_ReadPin(KEY3_GPIO_Port, KEY3_Pin) == GPIO_PIN_RESET)?
+			  calc::anti_chatter[digit][2]->Input(
+					  ( HAL_GPIO_ReadPin(KC2_GPIO_Port, KC2_Pin) == GPIO_PIN_RESET)?
 							  rpn_engine::KeyLevel::high :
 							  rpn_engine::KeyLevel::low
 			  );

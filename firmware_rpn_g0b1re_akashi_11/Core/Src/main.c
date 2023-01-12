@@ -394,15 +394,15 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, EN24_Pin|BLANK_Pin|KD2_Pin|KD4_Pin
+  HAL_GPIO_WritePin(GPIOC, EN24_Pin|BLANK_Pin|KR6_Pin|KR4_Pin
                           |LOAD_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, KD0_Pin|KD1_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, KR8_Pin|KR7_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, KD3_Pin|KD5_Pin|KD7_Pin|KD8_Pin
-                          |KD6_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, KR5_Pin|KR3_Pin|KR1_Pin|KR0_Pin
+                          |KR2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(STATUS_GPIO_Port, STATUS_Pin, GPIO_PIN_RESET);
@@ -414,34 +414,34 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : KD2_Pin KD4_Pin */
-  GPIO_InitStruct.Pin = KD2_Pin|KD4_Pin;
+  /*Configure GPIO pins : KR6_Pin KR4_Pin */
+  GPIO_InitStruct.Pin = KR6_Pin|KR4_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : KD0_Pin KD1_Pin */
-  GPIO_InitStruct.Pin = KD0_Pin|KD1_Pin;
+  /*Configure GPIO pins : KR8_Pin KR7_Pin */
+  GPIO_InitStruct.Pin = KR8_Pin|KR7_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : KD3_Pin KD5_Pin KD7_Pin KD8_Pin
-                           KD6_Pin */
-  GPIO_InitStruct.Pin = KD3_Pin|KD5_Pin|KD7_Pin|KD8_Pin
-                          |KD6_Pin;
+  /*Configure GPIO pins : KR5_Pin KR3_Pin KR1_Pin KR0_Pin
+                           KR2_Pin */
+  GPIO_InitStruct.Pin = KR5_Pin|KR3_Pin|KR1_Pin|KR0_Pin
+                          |KR2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : KEY1_Pin */
-  GPIO_InitStruct.Pin = KEY1_Pin;
+  /*Configure GPIO pin : KC0_Pin */
+  GPIO_InitStruct.Pin = KC0_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(KEY1_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(KC0_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : STATUS_Pin */
   GPIO_InitStruct.Pin = STATUS_Pin;
@@ -450,8 +450,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(STATUS_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : KEY2_Pin KEY3_Pin */
-  GPIO_InitStruct.Pin = KEY2_Pin|KEY3_Pin;
+  /*Configure GPIO pins : KC1_Pin KC2_Pin */
+  GPIO_InitStruct.Pin = KC1_Pin|KC2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
