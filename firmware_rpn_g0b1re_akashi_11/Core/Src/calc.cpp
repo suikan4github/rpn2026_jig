@@ -276,8 +276,14 @@ extern "C" void exec_calc()
 			  // Deassert load pulse.
 			  HAL_GPIO_WritePin(LOAD_GPIO_Port, LOAD_Pin, GPIO_PIN_RESET);
 
-			  // Dummy transmission to give the settling time of key.
-			  HAL_SPI_Transmit(&hspi1, (uint8_t *)&vfd_data[digit], 3, 100);
+			  {
+				  // Blank to adjust the brightness
+				  HAL_GPIO_WritePin(BLANK_GPIO_Port, BLANK_Pin, GPIO_PIN_SET);
+				  // Dummy transmission to give the settling time of key.
+				  HAL_SPI_Transmit(&hspi1, (uint8_t *)&vfd_data[digit], kDigitsSize, 100);
+				  // show display again
+				  HAL_GPIO_WritePin(BLANK_GPIO_Port, BLANK_Pin, GPIO_PIN_RESET);
+			  }
 
 			  // read key state and store the state to the calc::anti_chatter[] objects.
 			  // Anti chattering object will call the Console object, if needed.
